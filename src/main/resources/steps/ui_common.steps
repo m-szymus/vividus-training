@@ -1,1 +1,14 @@
+Composite: When I open main application page
+Given I am on main application page
+When I wait until element located by `caseSensitiveText(Swag Labs)` appears
+Then `${current-page-url}` is equal to `https://www.saucedemo.com/`
+When I take screenshot
 
+Composite: When I log in as admin with username `$userName` and password `$password`
+When I enter `<userName>` in field located by `xpath(//*[@id="user-name"])`
+And I enter `<password>` in field located by `xpath(//*[@id="password"])`
+And I click on element located by `xpath(//*[@id="login-button"])`
+When I wait until element located by `caseSensitiveText(Products)` appears
+Then `${current-page-url}` is equal to `${mainPage}/inventory.html`
+And number of elements found by `By.CssSelector(.inventory_item)` is equal to  `6`
+When I take screenshot
